@@ -1,10 +1,9 @@
-from odoo import api, models
+from odoo import models
 
 
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
-    @api.multi
     def get_eater(self):
         self.ensure_one()
         # todo check for max eater
