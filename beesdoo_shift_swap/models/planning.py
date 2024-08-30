@@ -47,7 +47,5 @@ class TaskTemplate(models.Model):
                 shift, swap_subscription_done, done = rec.update_shift_data(
                     shift, swap_subscription_done
                 )
-                if done:
-                    changes.remove(rec)
 
         return shifts
