@@ -22,7 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [shift](shift/) | 17.0.1.0.1 |  | Generate and manage shifts for cooperators.
-[shift_portal](shift_portal/) | 17.0.1.0.0 |  | Diplai shift on portal.
+[shift_portal](shift_portal/) | 17.0.1.0.0 |  | Diplay shifts on portal.
 
 [//]: # (end addons)
 
