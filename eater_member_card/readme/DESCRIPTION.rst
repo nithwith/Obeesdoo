@@ -1,2 +1,0 @@
-- eater barcode is computed from parent's barcode.
-- Print Member card? is set to True when a new eater is created.

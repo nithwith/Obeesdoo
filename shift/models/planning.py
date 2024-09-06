@@ -60,7 +60,6 @@ class ShiftPlanning(models.Model):
     sequence = fields.Integer()
     name = fields.Char()
     periodicity = fields.Integer(
-        "Periodicity",
         help="""From 1 to N. This number specifies the periodicity for the
         automated generation of a planning. For a weekly planning, the
         periodicity would be 7, because the planning has to be generated
@@ -81,7 +80,6 @@ class ShiftPlanning(models.Model):
             return self.search([])[0]
         return next_planning[0]
 
-    @api.multi
     def _get_next_planning_date(self, date):
         self.ensure_one()
         periodicity = self.periodicity
@@ -116,7 +114,7 @@ class ShiftPlanning(models.Model):
     def get_future_shifts(
         self,
         end_date,
-        start_date=datetime.now(),
+        start_date=None,
         worker_id=None,
         include_cancelled=True,
     ):
@@ -128,6 +126,8 @@ class ShiftPlanning(models.Model):
         :param end_date: Datetime
         :return: shift.shift list
         """
+        if not start_date:
+            start_date = datetime.now()
         # Getting existing shifts
         shift_domain = [("start_time", ">", start_date.strftime("%Y-%m-%d %H:%M:%S"))]
         if worker_id:
@@ -246,6 +246,7 @@ class ShiftTemplate(models.Model):
         return day_utc_time.replace(tzinfo=None)
 
     @api.depends("start_time", "end_time")
+    @api.depends_context("visualize_date")
     def _compute_fake_date(self):
         today = self._context.get("visualize_date", get_first_day_of_week())
         for rec in self:
@@ -342,7 +343,6 @@ class ShiftTemplate(models.Model):
 
         return tasks
 
-    @api.multi
     def get_task_day(self):
         """
         Creates the shifts according to the template without saving
@@ -356,7 +356,6 @@ class ShiftTemplate(models.Model):
             tasks |= tasks.new(task)
         return tasks
 
-    @api.multi
     def generate_task_day(self):
         """
         Creates the shifts according to the template and saves

@@ -13,7 +13,7 @@
                         class="oe_highlight"
                         type="object"
                         groups="shift.group_shift_management"
-                        attrs="{'invisible': [('is_worker', '=', False)]}"
+                        invisible="not is_worker"
                     />
                     <button
                         name="auto_extension"
@@ -21,11 +21,7 @@
                         class="oe_highlight"
                         type="object"
                         groups="shift.group_shift_attendance"
-                        attrs="{'invisible': ['|',
-                                                    ('is_worker', '=', False),
-                                                    '|',
-                                                        ('state', '!=', 'suspended'),
-                                                        ('extension_start_time', '!=', False)]}"
+                        invisible="not is_worker"
                     />
                     <button
                         name="manual_extension"
@@ -33,11 +29,7 @@
                         class="oe_highlight"
                         type="object"
                         groups="shift.group_shift_management"
-                        attrs="{'invisible': ['|',
-                                                    ('is_worker', '=', False),
-                                                    '|',
-                                                        ('state', '!=', 'suspended'),
-                                                        ('extension_start_time', '=', False)]}"
+                        invisible="not is_worker"
                     />
                     <button
                         name="coop_unsubscribe"
@@ -45,7 +37,7 @@
                         class="oe_highlight"
                         type="object"
                         groups="shift.group_shift_management"
-                        attrs="{'invisible': [('is_worker', '=', False)]}"
+                        invisible="not is_worker"
                     />
                     <button
                         name="register_holiday"
@@ -53,30 +45,30 @@
                         class="oe_highlight"
                         type="object"
                         groups="shift.group_shift_management"
-                        attrs="{'invisible': ['|', ('is_worker', '=', False), ('state', '=', 'resigning')]}"
+                        invisible="not is_worker"
                     />
                     <button
                         name="temporary_exempt"
                         string="Temporary Exemption"
                         type="object"
                         groups="shift.group_shift_management"
-                        attrs="{'invisible': ['|', ('is_worker', '=', False), ('state', '=', 'unsubscribed')]}"
+                        invisible="not is_worker"
                     />
                     <field
                         name="state"
                         widget="statusbar"
-                        attrs="{'invisible': [('is_worker', '=', False)]}"
+                        invisible="not is_worker"
                     />
                 </header>
             </xpath>
-            <xpath expr="//field[@name='type']" position="before">
+            <xpath expr="//field[@name='vat']" position="before">
                 <field name="is_worker" />
                 <field name="can_shop" />
             </xpath>
             <xpath expr="//notebook" position="inside">
                 <page
                     string="Worker information"
-                    attrs="{'invisible': [('is_worker', '=', False)]}"
+                    invisible="not is_worker"
                     name="work"
                 >
                     <group name="info_session" />
@@ -85,18 +77,18 @@
                             <field name="info_session" />
                             <field
                                 name="info_session_date"
-                                attrs="{'invisible': ['|', ('info_session', '=', False)]}"
+                                invisible="not info_session_date"
                             />
                             <field
                                 name="extension_start_time"
-                                attrs="{'invisible': [('extension_start_time', '=', False)]}"
+                                invisible="not extension_start_time"
                             />
                         </group>
                         <group>
                             <field name="working_mode" />
                             <field
                                 name="exempt_reason_id"
-                                attrs="{'invisible':[('working_mode', '!=', 'exempt')]}"
+                                invisible="working_mode != 'exempt'" 
                             />
                             <field name="super" />
                         </group>
@@ -125,16 +117,16 @@
                         <field name="working_mode" />
                         <field
                             name="irregular_start_date"
-                            attrs="{'invisible':[('working_mode', '!=', 'irregular')]}"
+                            invisible="working_mode!= 'irregular'"
                         />
                         <field
                             name="irregular_absence_date"
-                            attrs="{'invisible':[('working_mode', '!=', 'irregular')]}"
+                            invisible="working_mode!= 'irregular'"
                         />
 
                         <field
                             name="exempt_reason_id"
-                            attrs="{'invisible':[('working_mode', '!=', 'exempt')]}"
+                            invisible="working_mode!= 'exempt'"
                         />
                     </group>
                     <group string="Counter and Status">
@@ -144,7 +136,7 @@
                         <field name="sc" />
                         <field
                             name="irregular_absence_counter"
-                            attrs="{'invisible':[('working_mode', '!=', 'irregular')]}"
+                            invisible="working_mode!= 'irregular'"
                         />
                         <field name="unsubscribed" />
                         <field name="resigning" />
@@ -156,17 +148,17 @@
                         <field
                             name="next_countdown_date"
                             readonly="1"
-                            attrs="{'invisible':[('working_mode', '!=', 'irregular')]}"
+                            invisible="working_mode!= 'irregular'"
                         />
                         <field
                             name="future_alert_date"
                             readonly="1"
-                            attrs="{'invisible':[('working_mode', '!=', 'irregular')]}"
+                            invisible="working_mode!= 'irregular'"
                         />
                         <field
                             name="is_subscribed_to_shift"
                             readonly="1"
-                            attrs="{'invisible':[('working_mode', '!=', 'irregular')]}"
+                            invisible="working_mode!= 'irregular'"
                         />
                         <field name="time_extension" />
                         <field name="holiday_start_time" />

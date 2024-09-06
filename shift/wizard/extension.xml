@@ -6,10 +6,10 @@
             <form>
                 <field name="cooperator_id" invisible="1" />
                 <field name="auto" invisible="1" />
-                <group attrs="{'invisible': [('auto', '=', False)]}">
+                <group invisible="not auto">
                     <field name="extension_start_date" />
                 </group>
-                <group attrs="{'invisible': [('auto', '=', True)]}">
+                <group invisible="auto">
                     <field name="extension_days" />
                 </group>
                 <footer>
@@ -18,14 +18,14 @@
                         name="extension"
                         string="Confirm"
                         class="oe_highlight"
-                        attrs="{'invisible': [('auto', '=', True)]}"
+                        invisible="auto"
                     />
                     <button
                         type="object"
                         name="auto_ext"
                         string="Confirm"
                         class="oe_highlight"
-                        attrs="{'invisible': [('auto', '=', False)]}"
+                        invisible="not auto"
                     />
                     or
                     <button special="cancel" string="Cancel" />

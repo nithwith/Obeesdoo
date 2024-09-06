@@ -1,2 +1,0 @@
-* Thibault Francois
-* Patricia Daloze

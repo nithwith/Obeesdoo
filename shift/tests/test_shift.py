@@ -4,60 +4,12 @@
 from datetime import date, datetime, timedelta
 
 from odoo.exceptions import ValidationError
-from odoo.tests.common import TransactionCase
+
+# absolute import is needed otherwise there is a recursive import
+from odoo.addons.shift.tests.test_shift_common import TestShiftCommon
 
 
-class TestShift(TransactionCase):
-    def setUp(self):
-        super(TestShift, self).setUp()
-        self.shift_model = self.env["shift.shift"]
-        self.shift_template_model = self.env["shift.template"]
-        self.subscribe_wizard = self.env["shift.subscribe"]
-        self.holiday_wizard = self.env["shift.holiday"]
-        self.exemption_wizard = self.env["shift.temporary_exemption"]
-
-        self.current_time = datetime.now()
-        self.user_admin = self.env.ref("base.user_root")
-        self.user_demo = self.env.ref("base.user_demo")
-
-        self.worker_regular_1 = self.env.ref("shift.res_partner_worker_1_demo")
-        self.worker_irregular_2 = self.env.ref("shift.res_partner_worker_2_demo")
-        self.worker_regular_3 = self.env.ref("shift.res_partner_worker_3_demo")
-        self.worker_regular_5 = self.env.ref("shift.res_partner_worker_5_demo")
-        self.worker_regular_6 = self.env.ref("shift.res_partner_worker_6_demo")
-
-        self.planning_1 = self.env.ref("shift.shift_planning_1_demo")
-
-        self.task_template_1 = self.env.ref("shift.task_template_1_demo")
-        self.task_template_2 = self.env.ref("shift.task_template_2_demo")
-        self.task_template_3 = self.env.ref("shift.task_template_3_demo")
-
-        self.exempt_reason_1 = self.env.ref("shift.exempt_reason_1_demo")
-
-    def _generate_shifts(self, days=0, nb=1):
-        """
-        Run _generate_next_planning *nb* times beginning from today - *days*.
-        """
-        planning_cls = self.env["shift.planning"]
-        begin_date = date.today() - timedelta(days=days)
-        self.env["ir.config_parameter"].set_param("last_planning_seq", 0)
-        for i in range(nb):
-            # The following line is a hack to make planning last 7 days.
-            # This will not be necessary when the PR will be merged:
-            # https://github.com/beescoop/Obeesdoo/pull/207
-            # After the merge, the next_planning_date should be set only
-            # once at the beginning with last_planning_seq
-            self.env["ir.config_parameter"].set_param(
-                "shift.next_planning_date",
-                (begin_date + timedelta(days=i * 7)).isoformat(),
-            )
-            # Generate the planning
-            planning_cls._generate_next_planning()
-
-    def _count_number_of_shift(self, worker_id):
-        """Count number of shift for a worker."""
-        return self.shift_model.search_count([("worker_id", "=", worker_id.id)])
-
+class TestShift(TestShiftCommon):
     def test_unsubscribe_worker_from_task_template_1(self):
         """
         Check that removing a worker from a task_template via the
@@ -146,7 +98,7 @@ class TestShift(TransactionCase):
         super_worker.user_ids = self.user_demo
         subscription_wizard = (
             self.env["shift.subscribe"]
-            .with_context({"active_id": super_worker.id})
+            .with_context(active_id=super_worker.id)
             .create(
                 {},
             )
@@ -166,7 +118,7 @@ class TestShift(TransactionCase):
         self.assertEqual(self._count_number_of_shift(self.worker_regular_1), 2)
 
         subscribe_wiz = self.subscribe_wizard.with_context(
-            {"active_id": self.worker_regular_1.ids}
+            active_id=self.worker_regular_1.ids
         )
         subscribe_wiz = subscribe_wiz.create({"working_mode": "irregular"})
         subscribe_wiz.subscribe()
@@ -242,7 +194,7 @@ class TestShift(TransactionCase):
         self.assertEqual(self._count_number_of_shift(self.worker_regular_1), 5)
 
         holiday_wiz = self.holiday_wizard.with_context(
-            {"active_id": self.worker_regular_1.ids}
+            active_id=self.worker_regular_1.ids
         )
         status_id = self.worker_regular_1.cooperative_status_ids
         status_id.today = date.today()
@@ -373,7 +325,7 @@ class TestShift(TransactionCase):
         self.assertEqual(self._count_number_of_shift(self.worker_regular_1), 5)
 
         exemption_wiz = self.exemption_wizard.with_context(
-            {"active_id": self.worker_regular_1.ids}
+            active_id=self.worker_regular_1.ids
         )
         status_id = self.worker_regular_1.cooperative_status_ids
         status_id.today = date.today()
@@ -505,12 +457,3 @@ class TestShift(TransactionCase):
             self.worker_regular_1.cooperative_status_ids.next_shift_id,
             next_shift,
         )
-
-    def test_write_multiple_statuses(self):
-        """A naïve test that verifies that the write function on multiple status
-        records doesn't result in an error.
-        """
-        statuses = self.env["cooperative.status"]
-        statuses |= self.worker_regular_1.cooperative_status_ids
-        statuses |= self.worker_irregular_2.cooperative_status_ids
-        statuses.write({"irregular_start_date": "2023-05-08"})

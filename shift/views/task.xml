@@ -168,15 +168,15 @@
                                 name="replaced_id"
                                 options="{'no_create': True, 'no_open': True}"
                                 domain="[('working_mode', '=', 'regular')]"
-                                attrs="{'invisible': [('working_mode', '!=', 'regular')]}"
+                                invisible="working_mode != 'regular'"
                             />
                             <field
                                 name="is_regular"
-                                attrs="{'invisible': [('working_mode', '!=', 'regular')]}"
+                                invisible="working_mode != 'regular'"
                             />
                             <field
                                 name="is_compensation"
-                                attrs="{'invisible': [('working_mode', '!=', 'regular')]}"
+                                invisible="working_mode != 'regular'"
                             />
                             <field name="working_mode" invisible="1" />
                         </group>

@@ -1,2 +1,0 @@
-* Robin Keunen
-* Thibault Francois

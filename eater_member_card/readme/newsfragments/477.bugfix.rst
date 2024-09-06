@@ -1,2 +1,0 @@
-Revert change: Eaters no longer share their parent's barcode. Instead, their
-barcode is now undefined (i.e. no barcode).
