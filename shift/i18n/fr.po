@@ -301,7 +301,7 @@ msgstr "Annuler"
 #: code:addons/src/coopiteasy/obeesdoo/shift/models/shift_shift.py:0
 #, python-format
 msgid "Cancelled"
-msgstr ""
+msgstr "Annulé"
 
 #. module: shift
 #: model:ir.model.fields,field_description:shift.field_cooperative_status_history__change
@@ -669,7 +669,7 @@ msgstr ""
 
 #. module: shift
 #: model:ir.model.fields,field_description:shift.field_shift_generate_planning__date_start
-msgid "First Day of planning (should be Monday)"
+msgid "Premier jour du planning (devrait être le lundi)"
 msgstr ""
 
 #. module: shift
@@ -1223,7 +1223,7 @@ msgstr "En démission"
 #. module: shift
 #: model:ir.model.fields,field_description:shift.field_shift_shift__revert_info
 msgid "Revert Info"
-msgstr ""
+msgstr "Info"
 
 #. module: shift
 #: model_terms:ir.ui.view,arch_db:shift.journal_form_view
@@ -1410,7 +1410,7 @@ msgstr "Supercoopérateur"
 #: model:ir.model.fields,field_description:shift.field_shift_planning__task_template_ids
 #: model:ir.model.fields,field_description:shift.field_shift_shift__task_template_id
 msgid "Task Template"
-msgstr ""
+msgstr "Modèle de tâche"
 
 #. module: shift
 #: model:ir.model.fields,field_description:shift.field_shift_shift__task_type_id
