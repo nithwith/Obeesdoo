@@ -109,7 +109,7 @@ msgstr ""
 #: code:addons/src/coopiteasy/obeesdoo/shift/models/planning.py:0
 #, python-format
 msgid " is already assigned to "
-msgstr ""
+msgstr " est déjà affecté à "
 
 #. module: shift
 #. odoo-python
@@ -435,13 +435,13 @@ msgstr ""
 #. module: shift
 #: model:ir.model.fields,field_description:shift.field_shift_subscribe__create_user
 msgid "Create User"
-msgstr ""
+msgstr "Créer utilisateur"
 
 #. module: shift
 #: model:ir.model.fields,help:shift.field_shift_subscribe__create_user
 msgid ""
 "Create a portal user for the new worker. If a user exists, nothing is done."
-msgstr ""
+msgstr "Créer un utilisateur de portail pour le nouveau travailleur. Si un utilisateur existe déjà, rien n'est fait."
 
 #. module: shift
 #: model:ir.model.fields,field_description:shift.field_cooperative_exempt_reason__create_uid
@@ -495,7 +495,7 @@ msgstr ""
 #. module: shift
 #: model_terms:ir.ui.view,arch_db:shift.task_template_generation_view_form
 msgid "Daily Schedule"
-msgstr ""
+msgstr "Programme journalier"
 
 #. module: shift
 #: model:ir.model.fields,field_description:shift.field_shift_journal__date
@@ -519,7 +519,7 @@ msgstr "Jour"
 #: model:ir.actions.act_window,name:shift.action_day_number
 #: model:ir.model.fields,field_description:shift.field_shift_daynumber__number
 msgid "Day Number"
-msgstr ""
+msgstr "Jour"
 
 #. module: shift
 #: model_terms:ir.ui.view,arch_db:shift.res_config_settings_shift_view_form
@@ -580,26 +580,26 @@ msgstr "Durée en heure"
 #: model:ir.model.fields,field_description:shift.field_res_partner__next_shift_id
 #: model:ir.model.fields,field_description:shift.field_res_users__next_shift_id
 msgid "Earliest Open Shift"
-msgstr ""
+msgstr "Poste ouvert au plus tôt"
 
 #. module: shift
 #: model:ir.model.fields,help:shift.field_cooperative_status__next_shift_id
 #: model:ir.model.fields,help:shift.field_res_partner__next_shift_id
 #: model:ir.model.fields,help:shift.field_res_users__next_shift_id
 msgid "Earliest open shift the worker is subscribed to."
-msgstr ""
+msgstr "Poste ouvert au plus tôt"
 
 #. module: shift
 #: model_terms:ir.ui.view,arch_db:shift.task_shift_view_kanban
 msgid "Edit Shift"
-msgstr ""
+msgstr "Modifier"
 
 #. module: shift
 #: model_terms:ir.ui.view,arch_db:shift.task_template_view_kanban
 msgid ""
 "Edit Shift\n"
 "                                                Template"
-msgstr ""
+msgstr "Modifier\n"
 
 #. module: shift
 #: model:ir.model.fields,field_description:shift.field_shift_template__end_date
@@ -624,7 +624,7 @@ msgstr "Date de fin de la pause (inclue)"
 #: code:addons/src/coopiteasy/obeesdoo/shift/models/shift_shift.py:0
 #, python-format
 msgid "Excused"
-msgstr ""
+msgstr "Excusé"
 
 #. module: shift
 #: model:ir.actions.act_window,name:shift.action_exempt_reason
@@ -646,7 +646,7 @@ msgstr "Exempté"
 #. module: shift
 #: model:ir.model.fields,field_description:shift.field_shift_extension__extension_days
 msgid "Extension Days"
-msgstr ""
+msgstr "Jours d'extension"
 
 #. module: shift
 #: model:ir.model.fields,field_description:shift.field_cooperative_status__time_extension
@@ -658,7 +658,7 @@ msgstr "NB de jours d'extension"
 #: model:ir.model.fields,field_description:shift.field_res_partner__extension_start_time
 #: model:ir.model.fields,field_description:shift.field_res_users__extension_start_time
 msgid "Extension Start Day"
-msgstr ""
+msgstr "Début d'extension"
 
 #. module: shift
 #: model:ir.model.fields,help:shift.field_cooperative_status__today
@@ -716,18 +716,18 @@ msgstr ""
 #. module: shift
 #: model_terms:ir.ui.view,arch_db:shift.coop_status_form_view
 msgid "General information"
-msgstr ""
+msgstr "Informations générales"
 
 #. module: shift
 #: model_terms:ir.ui.view,arch_db:shift.res_config_settings_shift_view_form
 msgid "General settings"
-msgstr ""
+msgstr "Paramètres généraux"
 
 #. module: shift
 #: model:ir.actions.server,name:shift.ir_cron_generate_next_planning_ir_actions_server
 #: model:ir.cron,cron_name:shift.ir_cron_generate_next_planning
 msgid "Generate Next Planning"
-msgstr ""
+msgstr "Générer la planification suivante"
 
 #. module: shift
 #: model:ir.actions.act_window,name:shift.action_generate_shift_template_wizard
@@ -742,7 +742,7 @@ msgstr "Générer les templates de shift"
 #. module: shift
 #: model_terms:ir.ui.view,arch_db:shift.planning_view_form
 msgid "Generate shifts"
-msgstr ""
+msgstr "Générer planning"
 
 #. module: shift
 #. odoo-python
@@ -750,7 +750,7 @@ msgstr ""
 #: code:addons/src/coopiteasy/obeesdoo/shift/wizard/instantiate_planning.py:0
 #, python-format
 msgid "Generated Shift"
-msgstr ""
+msgstr "Générer planning"
 
 #. module: shift
 #. odoo-python
@@ -758,7 +758,7 @@ msgstr ""
 #: code:addons/src/coopiteasy/obeesdoo/shift/wizard/batch_template.py:0
 #, python-format
 msgid "Generated Shift Template"
-msgstr ""
+msgstr "Générer modèle de planning"
 
 #. module: shift
 #: model_terms:ir.ui.view,arch_db:shift.task_view_search
@@ -827,14 +827,14 @@ msgstr "Si actif, certains messages ont une erreur de livraison."
 #: model:ir.model.fields,field_description:shift.field_res_partner__info_session
 #: model:ir.model.fields,field_description:shift.field_res_users__info_session
 msgid "Information Session ?"
-msgstr ""
+msgstr "Session d'information  ?"
 
 #. module: shift
 #: model:ir.model.fields,field_description:shift.field_cooperative_status__info_session_date
 #: model:ir.model.fields,field_description:shift.field_res_partner__info_session_date
 #: model:ir.model.fields,field_description:shift.field_res_users__info_session_date
 msgid "Information Session Date"
-msgstr ""
+msgstr "Date de session d'information"
 
 #. module: shift
 #: model:ir.actions.act_window,name:shift.action_generate_shift_wizard
@@ -879,7 +879,7 @@ msgstr "Est un abonné"
 #: model:ir.model.fields,field_description:shift.field_res_partner__can_shop
 #: model:ir.model.fields,field_description:shift.field_res_users__can_shop
 msgid "Is worker allowed to shop?"
-msgstr ""
+msgstr "Le travailleur est-il autorisé à faire des achats ?"
 
 #. module: shift
 #: model_terms:ir.ui.view,arch_db:shift.task_view_search
@@ -972,7 +972,7 @@ msgstr "Mis à jour le"
 #. module: shift
 #: model:ir.model.fields,field_description:shift.field_res_config_settings__min_percentage_presence
 msgid "Limit attendance percentage to define underpopulated shift"
-msgstr ""
+msgstr "Limiter le pourcentage de présence pour définir une équipe sous-peuplée"
 
 #. module: shift
 #: model:ir.model.fields,field_description:shift.field_shift_generate_shift_template__line_ids
@@ -992,7 +992,7 @@ msgstr "Pièce jointe principale"
 #: model_terms:ir.ui.view,arch_db:shift.super_coop_partner_inherited_view_form
 #, python-format
 msgid "Manual Extension"
-msgstr ""
+msgstr "Extension manuelle"
 
 #. module: shift
 #: model:ir.model.fields,help:shift.field_cooperative_status__unsubscribed
@@ -1065,7 +1065,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:shift.field_res_partner__next_shift_date
 #: model:ir.model.fields,field_description:shift.field_res_users__next_shift_date
 msgid "Next Shift Date"
-msgstr ""
+msgstr "Date prochain shift"
 
 #. module: shift
 #: model:ir.model.fields,field_description:shift.field_shift_shift__message_needaction_counter
@@ -1161,17 +1161,17 @@ msgstr "Travailleurs réguliers"
 #: code:addons/src/coopiteasy/obeesdoo/shift/models/res_partner.py:0
 #, python-format
 msgid "Register Holiday"
-msgstr ""
+msgstr "Enregistrer une pause"
 
 #. module: shift
 #: model_terms:ir.ui.view,arch_db:shift.super_coop_partner_inherited_view_form
 msgid "Register Holidays"
-msgstr "Encoder une pause"
+msgstr "Enregistrer une pause"
 
 #. module: shift
 #: model_terms:ir.ui.view,arch_db:shift.task_shift_view_kanban
 msgid "Regular Shift"
-msgstr ""
+msgstr "Shift régulier"
 
 #. module: shift
 #: model:ir.model.fields,field_description:shift.field_shift_shift__is_regular
@@ -1197,12 +1197,12 @@ msgstr "Places restantes"
 #. module: shift
 #: model:ir.model.fields,field_description:shift.field_shift_shift__replaced_id
 msgid "Replaced By"
-msgstr ""
+msgstr "Remplacé par"
 
 #. module: shift
 #: model_terms:ir.ui.view,arch_db:shift.task_shift_view_kanban
 msgid "Replacement worker:"
-msgstr ""
+msgstr "Travailleur de remplacement:"
 
 #. module: shift
 #: model:ir.model.fields,field_description:shift.field_shift_subscribe__reset_compensation_counter
@@ -1260,7 +1260,7 @@ msgstr "Gestion des shifts"
 #. module: shift
 #: model:mail.template,name:shift.email_template_shift_summary
 msgid "Shift Summary"
-msgstr ""
+msgstr "Resumé"
 
 #. module: shift
 #: model_terms:ir.ui.view,arch_db:shift.planning_view_form
@@ -1283,7 +1283,7 @@ msgstr "Shifts - Présences"
 #. module: shift
 #: model:ir.model.fields,field_description:shift.field_res_config_settings__shift_period
 msgid "Shift period"
-msgstr ""
+msgstr "Période"
 
 #. module: shift
 #. odoo-python
