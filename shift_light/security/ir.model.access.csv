@@ -1,0 +1,7 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+write_shift_shift,write_shift_shift,model_shift_shift,group_shift_attendance,1,1,0,0
+manage_shift_shift,manage_shift_shift,model_shift_shift,group_shift_management,1,1,1,1
+manage_shift_type,manage_shift_type,model_shift_type,group_shift_management,1,1,1,1
+manage_shift_daynumber,manage_shift_daynumber,model_shift_daynumber,group_shift_management,1,1,1,1
+manage_shift_planning,manage_shift_planning,model_shift_planning,group_shift_management,1,1,1,1
+manage_shift_template,manage_shift_template,model_shift_template,group_shift_management,1,1,1,1
