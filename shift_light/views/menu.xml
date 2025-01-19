@@ -13,11 +13,11 @@
     <!-- Planning -->
     <menuitem
         name="Planning"
-        id="menu_task_top"
+        id="menu_shift_top"
         parent="menu_root"
         sequence="1"
         groups="shift.group_shift_attendance"
-        action="action_task"
+        action="action_shift"
     />
 
 

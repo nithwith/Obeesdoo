@@ -1,5 +1,5 @@
 <odoo>
-    <record model="ir.ui.view" id="task_view_tree">
+    <record model="ir.ui.view" id="shift_view_tree">
         <field name="name">Shift List</field>
         <field name="model">shift.shift</field>
         <field name="arch" type="xml">
@@ -12,8 +12,8 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="task_view_form">
-        <field name="name">Task Template Form</field>
+    <record model="ir.ui.view" id="shift_view_form">
+        <field name="name">Shift Form</field>
         <field name="model">shift.shift</field>
         <field name="arch" type="xml">
             <form>
@@ -41,8 +41,8 @@
     </record>
 
     
-    <record model="ir.ui.view" id="task_view_form">
-        <field name="name">Task Template Form</field>
+    <record model="ir.ui.view" id="shift_view_form">
+        <field name="name">Shift Form</field>
         <field name="model">shift.shift</field>
         <field name="arch" type="xml">
             <form>
@@ -57,8 +57,8 @@
                     </div>
                     <group>
                         <group>
-                            <field name="task_template_id" />
-                            <field name="task_type_id" />
+                            <field name="shift_template_id" />
+                            <field name="shift_type_id" />
                             <field
                                 name="partner_id"
                                 options="{'no_create': True, 'no_open': True}"/>
@@ -101,7 +101,7 @@
     
 
     <!-- Actions -->
-    <record model="ir.actions.act_window" id="action_task">
+    <record model="ir.actions.act_window" id="action_shift">
         <field name="name">Shifts</field>
         <field name="res_model">shift.shift</field>
         <field name="view_mode">calendar,tree,form,pivot</field>

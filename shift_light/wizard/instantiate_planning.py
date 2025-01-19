@@ -13,10 +13,10 @@ class InstantiatePlanning(models.TransientModel):
         "shift.planning", readonly=True, default=_get_planning
     )
 
-    def generate_task(self):
+    def generate_shift(self):
         self.ensure_one()
         self = self.with_context(visualize_date=self.date_start, tracking_disable=True)
-        shifts = self.planning_id.task_template_ids.generate_task_day()
+        shifts = self.planning_id.shift_template_ids.generate_shift_day()
         return {
             "name": _("Generated Shift"),
             "type": "ir.actions.act_window",

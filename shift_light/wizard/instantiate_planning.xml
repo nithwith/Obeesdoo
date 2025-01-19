@@ -11,7 +11,7 @@
                 <footer>
                     <button
                         type="object"
-                        name="generate_task"
+                        name="generate_shift"
                         string="Confirm"
                         class="oe_highlight"
                     />

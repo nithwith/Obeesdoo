@@ -66,7 +66,7 @@ class ShiftPlanning(models.Model):
         every seven days.""",
         default=7,
     )
-    task_template_ids = fields.One2many("shift.template", "planning_id")
+    shift_template_ids = fields.One2many("shift.template", "planning_id")
 
     @api.model
     def _get_next_planning(self, sequence):
@@ -94,21 +94,21 @@ class ShiftPlanning(models.Model):
     @api.model
     def _generate_next_planning(self):
         config = self.env["ir.config_parameter"].sudo()
-        last_seq = int(config.get_param("shift.last_planning_seq", 0))
+        last_seq = int(config.get_param("shift_light.last_planning_seq", 0))
         date = fields.Date.from_string(config.get_param("shift.next_planning_date", 0))
 
         planning = self._get_next_planning(last_seq)
         planning = planning.with_context(visualize_date=date)
 
-        if not planning.task_template_ids:
-            _logger.error("Could not generate next planning: no task template defined.")
+        if not planning.shift_template_ids:
+            _logger.error("Could not generate next planning: no shift template defined.")
             return
 
-        planning.task_template_ids.generate_task_day()
+        planning.shift_template_ids.generate_shift_day()
 
         next_date = planning._get_next_planning_date(date)
-        config.set_param("shift.last_planning_seq", planning.sequence)
-        config.set_param("shift.next_planning_date", next_date)
+        config.set_param("shift_light.last_planning_seq", planning.sequence)
+        config.set_param("shift_light.next_planning_date", next_date)
 
     @api.model
     def get_future_shifts(
@@ -137,13 +137,13 @@ class ShiftPlanning(models.Model):
             .sudo()
             .search(
                 shift_domain,
-                order="start_time, task_template_id, task_type_id",
+                order="start_time, shift_template_id, shift_type_id",
             )
         )
 
         # Getting parameters
         last_sequence = int(
-            self.env["ir.config_parameter"].sudo().get_param("shift.last_planning_seq")
+            self.env["ir.config_parameter"].sudo().get_param("shift_light.last_planning_seq")
         )
 
         next_planning = self._get_next_planning(last_sequence)
@@ -151,7 +151,7 @@ class ShiftPlanning(models.Model):
         next_planning_date = fields.Datetime.from_string(
             self.env["ir.config_parameter"]
             .sudo()
-            .get_param("shift.next_planning_date", 0)
+            .get_param("shift_light.next_planning_date", 0)
         )
 
         next_planning = next_planning.with_context(visualize_date=next_planning_date)
@@ -162,7 +162,7 @@ class ShiftPlanning(models.Model):
         # computations.
         future_shift_list = []
         while next_planning_date < end_date:
-            for shift in next_planning.task_template_ids._prepare_task_day():
+            for shift in next_planning.shift_template_ids._prepare_shift_day():
                 if shift["start_time"] > start_date:
                     future_shift_list.append(shift)
             next_planning_date = next_planning._get_next_planning_date(
@@ -193,14 +193,14 @@ class ShiftTemplate(models.Model):
     name = fields.Char(required=True)
     planning_id = fields.Many2one("shift.planning", required=True)
     day_nb_id = fields.Many2one("shift.daynumber", string="Day", required=True)
-    task_type_id = fields.Many2one("shift.type", string="Type")
+    shift_type_id = fields.Many2one("shift.type", string="Type")
     start_time = fields.Float(required=True)
     end_time = fields.Float(required=True)
 
     duration = fields.Float(help="Duration in Hour")
     worker_nb = fields.Integer(
         string="Number of worker",
-        help="Max number of worker for this task",
+        help="Max number of worker for this shift",
         default=1,
     )
     active = fields.Boolean(default=True)
@@ -226,7 +226,7 @@ class ShiftTemplate(models.Model):
     def _compute_fake_date(self):
         today = self._context.get("visualize_date", get_first_day_of_week())
         for rec in self:
-            # Find the day of this task template 'rec'.
+            # Find the day of this shift template 'rec'.
             day = today + timedelta(days=rec.day_nb_id.number - 1)
             # Compute the beginning and ending time according to the
             # context timezone.
@@ -249,15 +249,15 @@ class ShiftTemplate(models.Model):
         if self.start_time:
             self.end_time = self.start_time + self.duration
 
-    def _prepare_task_day(self):
+    def _prepare_shift_day(self):
         """
         Generates a list of dict objects containing the informations
         for the shifts to generate based on the template data
         """
-        tasks = []
+        shifts = []
         for rec in self:
             for i in range(0, rec.worker_nb):
-                tasks.append(
+                shifts.append(
                     {
                         "name": "[%s] %s %s (%s - %s) [%s]"
                         % (
@@ -268,41 +268,41 @@ class ShiftTemplate(models.Model):
                             float_to_time(rec.end_time),
                             i,
                         ),
-                        "task_template_id": rec.id,
-                        "task_type_id": rec.task_type_id.id,
+                        "shift_template_id": rec.id,
+                        "shift_type_id": rec.shift_type_id.id,
                         "start_time": rec.start_date,
                         "end_time": rec.end_date,
                         "state": "open",
                     }
                 )
 
-        return tasks
+        return shifts
 
-    def get_task_day(self):
+    def get_shift_day(self):
         """
         Creates the shifts according to the template without saving
         them into the database.
-        To adapt the behaviour, function _prepare_task_day()
+        To adapt the behaviour, function _prepare_shift_day()
         should be overwritten.
         """
-        tasks = self.env["shift.shift"]
-        task_list = self._prepare_task_day()
-        for task in task_list:
-            tasks |= tasks.new(task)
-        return tasks
+        shifts = self.env["shift.shift"]
+        shift_list = self._prepare_shift_day()
+        for s in shift_list:
+            shifts |= shifts.new(s)
+        return shifts
 
-    def generate_task_day(self):
+    def generate_shift_day(self):
         """
         Creates the shifts according to the template and saves
         them into the database.
-        To adapt the behaviour, function _prepare_task_day()
+        To adapt the behaviour, function _prepare_shift_day()
         should be overwritten.
         """
-        tasks = self.env["shift.shift"]
-        task_list = self._prepare_task_day()
-        for task in task_list:
-            tasks |= tasks.create(task)
-        return tasks
+        shifts = self.env["shift.shift"]
+        shift_list = self._prepare_shift_day()
+        for s in shift_list:
+            shifts |= shifts.create(s)
+        return shifts
 
 
 

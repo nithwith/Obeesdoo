@@ -1,11 +1,11 @@
 <odoo>
-    <record model="ir.ui.view" id="task_template_view_tree">
+    <record model="ir.ui.view" id="shift_template_view_tree">
         <field name="name">Shift Template List</field>
         <field name="model">shift.template</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="planning_id" />
-                <field name="task_type_id" />
+                <field name="shift_type_id" />
                 <field name="day_nb_id" />
                 <field name="name" />
                 <field name="start_time" widget="float_time" />
@@ -16,14 +16,14 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="task_template_view_search">
+    <record model="ir.ui.view" id="shift_template_view_search">
         <field name="name">Shift Template Search</field>
         <field name="model">shift.template</field>
         <field name="arch" type="xml">
             <search>
                 <field name="name" />
                 <field name="planning_id" />
-                <field name="task_type_id" />
+                <field name="shift_type_id" />
                 <field name="day_nb_id" />
                 <filter
                     string="Planning"
@@ -39,8 +39,8 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="task_template_view_form">
-        <field name="name">Task Template Form</field>
+    <record model="ir.ui.view" id="shift_template_view_form">
+        <field name="name">Shift Template Form</field>
         <field name="model">shift.template</field>
         <field name="arch" type="xml">
             <form>
@@ -54,7 +54,7 @@
                         <group>
                             <field name="day_nb_id" />
                             <field name="planning_id" />
-                            <field name="task_type_id" />
+                            <field name="shift_type_id" />
                             <field name="worker_nb" />
                             <field name="active" />
                         </group>
@@ -69,7 +69,7 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="task_template_view_calendar">
+    <record model="ir.ui.view" id="shift_template_view_calendar">
         <field name="name">Shift Template Calendar</field>
         <field name="model">shift.template</field>
         <field name="arch" type="xml">
@@ -77,7 +77,7 @@
                 string="Calendar View"
                 date_start="start_date"
                 date_stop="end_date"
-                color="task_type_id"
+                color="shift_type_id"
             >
                 <field name="name"/>
             </calendar>

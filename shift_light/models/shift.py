@@ -28,9 +28,9 @@ class ShiftShift(models.Model):
         }[state]
 
     name = fields.Char(tracking=True)
-    task_template_id = fields.Many2one("shift.template")
-    planning_id = fields.Many2one(related="task_template_id.planning_id", store=True)
-    task_type_id = fields.Many2one("shift.type", string="Task Type")
+    shift_template_id = fields.Many2one("shift.template")
+    planning_id = fields.Many2one(related="shift_template_id.planning_id", store=True)
+    shift_type_id = fields.Many2one("shift.type", string="Shift Type")
     partner_id = fields.Many2one("res.partner", tracking=True)
     partner_phone = fields.Char(related='partner_id.phone', related_sudo=True)
     start_time = fields.Datetime(tracking=True, index=True, required=True)
