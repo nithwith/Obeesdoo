@@ -115,7 +115,6 @@ class ShiftPlanning(models.Model):
         self,
         end_date,
         start_date=None,
-        worker_id=None,
         include_cancelled=True,
     ):
         """
@@ -130,8 +129,6 @@ class ShiftPlanning(models.Model):
             start_date = datetime.now()
         # Getting existing shifts
         shift_domain = [("start_time", ">", start_date.strftime("%Y-%m-%d %H:%M:%S"))]
-        if worker_id:
-            shift_domain.append(("worker_id", "=", worker_id.id))
         if not include_cancelled:
             shift_domain.append(("state", "!=", "cancel"))
 
@@ -178,14 +175,7 @@ class ShiftPlanning(models.Model):
             )
 
         # Filtering future shifts
-        if worker_id:
-            filtered_future_shift_list = [
-                shift
-                for shift in future_shift_list
-                if shift["worker_id"] == worker_id.id
-            ]
-        else:
-            filtered_future_shift_list = future_shift_list
+        filtered_future_shift_list = future_shift_list
 
         # Converting dictionary to recordset
         shift_list = existing_shift_list + [
@@ -206,11 +196,6 @@ class ShiftTemplate(models.Model):
     task_type_id = fields.Many2one("shift.type", string="Type")
     start_time = fields.Float(required=True)
     end_time = fields.Float(required=True)
-    super_coop_id = fields.Many2one(
-        "res.users",
-        string="Super Cooperative",
-        domain=[("partner_id.super", "=", True)],
-    )
 
     duration = fields.Float(help="Duration in Hour")
     worker_nb = fields.Integer(
@@ -218,18 +203,9 @@ class ShiftTemplate(models.Model):
         help="Max number of worker for this task",
         default=1,
     )
-    worker_ids = fields.Many2many(
-        "res.partner",
-        string="Recurrent worker assigned",
-        domain=[("is_worker", "=", True)],
-    )
-    remaining_worker = fields.Integer(
-        compute="_compute_remaining", store=True, string="Remaining Place"
-    )
     active = fields.Boolean(default=True)
     # For Kanban View Only
     color = fields.Integer("Color Index")
-    worker_name = fields.Char(compute="_compute_worker_name")
     # For calendar View
     start_date = fields.Datetime(compute="_compute_fake_date", search="_search_dummy")
     end_date = fields.Datetime(compute="_compute_fake_date", search="_search_dummy")
@@ -262,26 +238,6 @@ class ShiftTemplate(models.Model):
     def _search_dummy(self, operator, value):
         return []
 
-    @api.depends("worker_ids", "worker_nb")
-    def _compute_remaining(self):
-        for rec in self:
-            rec.remaining_worker = rec.worker_nb - len(rec.worker_ids)
-
-    @api.depends("worker_ids")
-    def _compute_worker_name(self):
-        for rec in self:
-            rec.worker_name = ",".join(rec.worker_ids.mapped("display_name"))
-
-    @api.constrains("worker_nb", "worker_ids")
-    def _nb_worker_max(self):
-        for rec in self:
-            if len(rec.worker_ids) > rec.worker_nb:
-                raise UserError(
-                    _(
-                        "You cannot assign more workers than the maximal "
-                        "number defined on template. "
-                    )
-                )
 
     @api.onchange("start_time", "end_time")
     def _get_duration(self):
@@ -301,24 +257,6 @@ class ShiftTemplate(models.Model):
         tasks = []
         for rec in self:
             for i in range(0, rec.worker_nb):
-                worker_id = rec.worker_ids[i] if len(rec.worker_ids) > i else False
-                # remove worker in holiday and temporary exempted
-                if worker_id and worker_id.cooperative_status_ids:
-                    status = worker_id.cooperative_status_ids[0]
-                    if (
-                        status.holiday_start_time
-                        and status.holiday_end_time
-                        and status.holiday_start_time <= rec.start_date.date()
-                        and status.holiday_end_time >= rec.end_date.date()
-                    ):
-                        worker_id = False
-                    if (
-                        status.temporary_exempt_start_date
-                        and status.temporary_exempt_end_date
-                        and status.temporary_exempt_start_date <= rec.start_date.date()
-                        and status.temporary_exempt_end_date >= rec.end_date.date()
-                    ):
-                        worker_id = False
                 tasks.append(
                     {
                         "name": "[%s] %s %s (%s - %s) [%s]"
@@ -332,9 +270,6 @@ class ShiftTemplate(models.Model):
                         ),
                         "task_template_id": rec.id,
                         "task_type_id": rec.task_type_id.id,
-                        "super_coop_id": rec.super_coop_id.id,
-                        "worker_id": worker_id and worker_id.id or False,
-                        "is_regular": True if worker_id else False,
                         "start_time": rec.start_date,
                         "end_time": rec.end_date,
                         "state": "open",
@@ -369,63 +304,6 @@ class ShiftTemplate(models.Model):
             tasks |= tasks.create(task)
         return tasks
 
-    @api.onchange("worker_ids")
-    def check_for_multiple_shifts(self):
-        original_ids = {worker.id for worker in self._origin.worker_ids}
 
-        warnings = []
-        for worker in self.worker_ids:
-            if worker.id not in original_ids:
-                shifts = [
-                    shift.name
-                    for shift in worker.subscribed_shift_ids
-                    if shift.id != self.id
-                ]
-                if shifts:
-                    warnings.append(
-                        worker.name + _(" is already assigned to ") + ", ".join(shifts)
-                    )
 
-        if warnings:
-            return {
-                "warning": {
-                    "title": _("Warning"),
-                    "message": "\n".join(warnings),
-                }
-            }
 
-    def write(self, vals):
-        """
-        Overwrite write() function to apply changes to already created shift.
-        """
-        saved_vals = {}
-        for rec in self:
-            saved_vals[rec] = rec.worker_ids
-        result = super().write(vals)
-        for rec in self:
-            rec._update_shifts_on_worker_change(
-                prev_worker_ids=saved_vals[rec],
-                cur_worker_ids=rec.worker_ids,
-            )
-        return result
-
-    def _update_shifts_on_worker_change(self, prev_worker_ids, cur_worker_ids):
-        """
-        Subscribe or Unsubscribe worker to already generated shifts
-        """
-        self.ensure_one()
-        shift_cls = self.env["shift.shift"]
-        removed_workers = prev_worker_ids - cur_worker_ids
-        added_workers = cur_worker_ids - prev_worker_ids
-        if removed_workers:
-            shift_cls.unsubscribe_from_today(
-                worker_ids=removed_workers,
-                task_tmpl_ids=self,
-                now=datetime.now(),
-            )
-        if added_workers:
-            shift_cls.subscribe_from_today(
-                worker_ids=added_workers,
-                task_tmpl_ids=self,
-                now=datetime.now(),
-            )
