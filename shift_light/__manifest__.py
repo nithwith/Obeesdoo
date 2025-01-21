@@ -11,7 +11,8 @@
     "website": "",
     "category": "Cooperative management",
     "version": "17.0.1.1.0",
-    "depends": ["mail"],
+    "depends": ["mail",
+                "portal"],
     "data": [
         "security/group.xml",
         "security/ir.model.access.csv",
@@ -20,6 +21,7 @@
         "views/shift.xml",
         "views/shift_template.xml",
         "wizard/generate_planning.xml",
+        "wizard/portal_wizard_views.xml",
         "views/menu.xml",
     ],
     "demo": [

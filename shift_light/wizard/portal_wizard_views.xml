@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="inherit_wizard_view" model="ir.ui.view">
+            <field name="name">Grant shift access</field>
+            <field name="model">portal.wizard</field>
+            <field name="inherit_id" ref="portal.wizard_view"/>
+            <field name="arch" type="xml">
+                <tree position="inside">
+                    <button string="Grant internal access" name="action_grant_internal_access" type="object" class="btn-primary"
+                    invisible="is_portal or is_internal or email_state != 'ok'"/>
+                </tree>
+            </field>
+        </record>
+
+</odoo>
