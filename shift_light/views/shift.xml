@@ -128,13 +128,12 @@
                 color="color"
                 form_view_id="%(shift_light.shift_view_form_calendar)d">
                 <field name="state" filters="1"/>
-                <field name="partner_id" filters="1"/>
-                <field 
-                name="partner_id" 
+                <field  name="partner_id" invisible="1"/>
+                <field  name="partner_name" 
                 options="{'icon': 'fa fa-user-o'}"
-                invisible="not partner_id"/>
-                <field 
-                name="partner_phone" 
+                invisible="not partner_id"
+                />
+                <field name="partner_phone" 
                 options="{'icon': 'fa fa-phone'}" 
                 invisible="not partner_id"/>
             </calendar>
