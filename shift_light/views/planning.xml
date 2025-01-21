@@ -9,6 +9,22 @@
         </field>
     </record>
 
+    <record model="ir.actions.act_window" id="action_days">
+        <field name="name">Days Action</field>
+        <field name="res_model">shift.daynumber</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_shift_type">
+        <field name="name">Shift type Action</field>
+        <field name="res_model">shift.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}
+        </field>
+    </record>
+
     <record model="ir.actions.act_window" id="action_generate_shift_wizard">
         <field name="name">Instanciate Planning Action</field>
         <field name="res_model">shift.generate_planning</field>
@@ -59,8 +75,13 @@
         <field name="model">shift.planning</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="sequence" />
                 <field name="name" />
+                <button
+                        type="action"
+                        name="%(action_generate_shift_wizard)d"
+                        string="Generate shifts"
+                        colspan="2"
+                    />
                 <button
                     type="action"
                     name="%(action_shift_template)d"

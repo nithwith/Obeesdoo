@@ -1,17 +1,17 @@
-import itertools
-import json
-from datetime import datetime, time, timedelta
-
 from odoo import api, fields, models
+from datetime import datetime, time, timedelta
 from odoo.exceptions import UserError
 from odoo.tools.translate import _
-
 
 class ShiftShift(models.Model):
     _name = "shift.shift"
     _description = "shift.shift"
     _inherit = ["mail.thread"]
     _order = "start_time asc"
+
+    def _compute_display_name(self):
+        for rec in self:
+            rec.display_name = rec.partner_id.name or ''
 
     def _get_selection_status(self):
         return [
@@ -22,9 +22,9 @@ class ShiftShift(models.Model):
 
     def _get_color_mapping(self, state):
         return {
-            "open": 0,
-            "done": 10,
-            "need_help": 9,
+            "open": 1,
+            "reserved": 10,
+            "need_help": 3,
         }[state]
 
     name = fields.Char(tracking=True)
@@ -46,17 +46,48 @@ class ShiftShift(models.Model):
 
     def _expand_states(self, states, domain, order):
         return [key for key, val in self._fields["state"].selection(self)]
+    
+    def write(self, vals):
+        print(vals)
+        if not self.env.user.has_group('shift_light.group_shift_management') and vals.get('start_time') or vals.get('end_time'):
+            raise UserError(_("You can't change shift informations."))
+        return super().write(vals)
 
     @api.depends("state")
     def _compute_color(self):
         for rec in self:
             rec.color = self._get_color_mapping(rec.state)
 
+    def get_action(self, initial_date=False):
+        context = {}
+        if initial_date:
+            context['initial_date'] = initial_date
+        return {
+            'name': _('Shifts'),
+            'type': 'ir.actions.act_window',
+            'target': 'current',
+            'res_model': 'shift.shift',
+            'view_mode': 'calendar',
+            'context': context
+        }
+
     def action_reserved(self):
         for rec in self:
+            if not rec.partner_id:
+                rec.partner_id = self.env.user.partner_id
             rec.state = "reserved"
+        return self.get_action(rec[0].start_time)
 
     def action_need_help(self):
         for rec in self:
+            if not rec.partner_id:
+                rec.partner_id = self.env.user.partner_id
             rec.state = "need_help"
+        return self.get_action(rec[0].start_time)
+
+    def action_unsubscribe(self):
+        for rec in self:
+            rec.partner_id = False
+            rec.state = "open"
+        return self.get_action(rec[0].start_time)
 

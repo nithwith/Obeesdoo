@@ -84,26 +84,12 @@
         </field>
     </record>
 
-   
-
-    <record model="ir.actions.act_window" id="action_generate_shift_template_wizard">
-        <field name="name">Generate Shift Template</field>
-        <field name="res_model">shift.generate_shift_template</field>
-        <field name="view_mode">form</field>
-        <field name="target">new</field>
-    </record>
-
     <record model="ir.ui.view" id="type_view_form">
         <field name="name">Shift Type Form</field>
         <field name="model">shift.type</field>
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button
-                        type="action"
-                        name="%(action_generate_shift_template_wizard)d"
-                        string="Generate shift Templates"
-                    />
                 </header>
                 <sheet>
                     <group>

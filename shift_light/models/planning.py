@@ -259,14 +259,13 @@ class ShiftTemplate(models.Model):
             for i in range(0, rec.worker_nb):
                 shifts.append(
                     {
-                        "name": "[%s] %s %s (%s - %s) [%s]"
+                        "name": "[%s] %s %s (%s - %s)"
                         % (
                             rec.start_date.date(),
                             rec.planning_id.name,
                             rec.day_nb_id.name,
                             float_to_time(rec.start_time),
-                            float_to_time(rec.end_time),
-                            i,
+                            float_to_time(rec.end_time)
                         ),
                         "shift_template_id": rec.id,
                         "shift_type_id": rec.shift_type_id.id,

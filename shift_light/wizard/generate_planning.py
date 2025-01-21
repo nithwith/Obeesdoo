@@ -20,9 +20,8 @@ class InstantiatePlanning(models.TransientModel):
         return {
             "name": _("Generated Shift"),
             "type": "ir.actions.act_window",
-            "view_mode": "kanban,calendar,tree,form,pivot",
+            "view_mode": "calendar,tree,form,pivot",
             "res_model": "shift.shift",
             "target": "current",
             "domain": [("id", "in", shifts.ids)],
-            "context": {"search_default_gb_day": 1},
         }

@@ -5,3 +5,4 @@ manage_shift_type,manage_shift_type,model_shift_type,group_shift_management,1,1,
 manage_shift_daynumber,manage_shift_daynumber,model_shift_daynumber,group_shift_management,1,1,1,1
 manage_shift_planning,manage_shift_planning,model_shift_planning,group_shift_management,1,1,1,1
 manage_shift_template,manage_shift_template,model_shift_template,group_shift_management,1,1,1,1
+manage_shift_generate_planning,manage_shift_generate_planning,model_shift_generate_planning,group_shift_management,1,1,1,1

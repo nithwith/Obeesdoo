@@ -5,8 +5,8 @@
     <menuitem
         name="Shift Management"
         id="menu_root"
-        groups="shift.group_shift_attendance"
-        web_icon="shift,static/description/icon.png"
+        groups="shift_light.group_shift_attendance"
+        web_icon="shift_light,static/description/icon.png"
     />
 
 
@@ -16,18 +16,55 @@
         id="menu_shift_top"
         parent="menu_root"
         sequence="1"
-        groups="shift.group_shift_attendance"
-        action="action_shift"
+        groups="shift_light.group_shift_attendance"
+        action="shift_light.action_shift"
     />
 
 
-    <!-- Templates -->
+    <!-- Config -->
+
     <menuitem
-        name="Template"
-        id="menu_template_top"
+        name="Settings"
+        id="menu_settings"
         parent="menu_root"
-        groups="shift.group_shift_management"
+        groups="shift_light.group_shift_management"
         sequence="20"
-        action="action_planning"
+        action="shift_light.action_planning"
+    />
+
+    <menuitem
+        name="Generate planning"
+        id="menu_template_top"
+        parent="menu_settings"
+        groups="shift_light.group_shift_management"
+        sequence="20"
+        action="shift_light.action_planning"
+    />
+
+    <menuitem
+        name="Shift list"
+        id="menu_shift_list"
+        parent="menu_settings"
+        groups="shift_light.group_shift_management"
+        sequence="21"
+        action="shift_light.action_shift_list"
+    />
+
+    <menuitem
+        name="Days"
+        id="menu_days"
+        parent="menu_settings"
+        groups="shift_light.group_shift_management"
+        sequence="30"
+        action="shift_light.action_days"
+    />
+
+    <menuitem
+        name="Shift type"
+        id="menu_shift_type"
+        parent="menu_settings"
+        groups="shift_light.group_shift_management"
+        sequence="40"
+        action="shift_light.action_shift_type"
     />
 </odoo>

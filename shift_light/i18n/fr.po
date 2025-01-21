@@ -1,0 +1,497 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* shift_light
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0-20240312\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-21 16:01+0000\n"
+"PO-Revision-Date: 2025-01-21 16:01+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_daynumber__active
+#: model:ir.model.fields,field_description:shift_light.field_shift_template__active
+#: model:ir.model.fields,field_description:shift_light.field_shift_type__active
+msgid "Active"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: shift_light
+#: model_terms:ir.ui.view,arch_db:shift_light.shift_template_view_calendar
+msgid "Calendar View"
+msgstr "Calendrier"
+
+#. module: shift_light
+#: model_terms:ir.ui.view,arch_db:shift_light.generate_planning_view_form
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__color
+msgid "Color"
+msgstr "Couleur"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_template__color
+msgid "Color Index"
+msgstr "Couleur"
+
+#. module: shift_light
+#: model_terms:ir.ui.view,arch_db:shift_light.generate_planning_view_form
+msgid "Confirm"
+msgstr "Confirmer"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_daynumber__create_uid
+#: model:ir.model.fields,field_description:shift_light.field_shift_generate_planning__create_uid
+#: model:ir.model.fields,field_description:shift_light.field_shift_planning__create_uid
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__create_uid
+#: model:ir.model.fields,field_description:shift_light.field_shift_template__create_uid
+#: model:ir.model.fields,field_description:shift_light.field_shift_type__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_daynumber__create_date
+#: model:ir.model.fields,field_description:shift_light.field_shift_generate_planning__create_date
+#: model:ir.model.fields,field_description:shift_light.field_shift_planning__create_date
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__create_date
+#: model:ir.model.fields,field_description:shift_light.field_shift_template__create_date
+#: model:ir.model.fields,field_description:shift_light.field_shift_type__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_template__day_nb_id
+msgid "Day"
+msgstr "Jour"
+
+#. module: shift_light
+#: model:ir.actions.act_window,name:shift_light.action_day_number
+#: model:ir.model.fields,field_description:shift_light.field_shift_daynumber__number
+msgid "Day Number"
+msgstr "Position du jour"
+
+#. module: shift_light
+#: model:ir.ui.menu,name:shift_light.menu_days
+msgid "Days"
+msgstr "Jours"
+
+#. module: shift_light
+#: model:ir.actions.act_window,name:shift_light.action_days
+msgid "Days Action"
+msgstr "Jours"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_type__description
+#: model_terms:ir.ui.view,arch_db:shift_light.type_view_form
+msgid "Description"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_daynumber__display_name
+#: model:ir.model.fields,field_description:shift_light.field_shift_generate_planning__display_name
+#: model:ir.model.fields,field_description:shift_light.field_shift_planning__display_name
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__display_name
+#: model:ir.model.fields,field_description:shift_light.field_shift_template__display_name
+#: model:ir.model.fields,field_description:shift_light.field_shift_type__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_template__duration
+msgid "Duration"
+msgstr "Durée"
+
+#. module: shift_light
+#: model:ir.model.fields,help:shift_light.field_shift_template__duration
+msgid "Duration in Hour"
+msgstr "Durée"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_template__end_date
+msgid "End Date"
+msgstr "Fin"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__end_time
+#: model:ir.model.fields,field_description:shift_light.field_shift_template__end_time
+msgid "End Time"
+msgstr "Fin"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_generate_planning__date_start
+msgid "First Day of planning (should be Monday)"
+msgstr "Date de début du planning"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,help:shift_light.field_shift_daynumber__number
+msgid ""
+"From 1 to N, When you will instanciate your planning, Day 1 will be the "
+"start date of the instance, Day 2 the second, etc..."
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,help:shift_light.field_shift_planning__periodicity
+msgid ""
+"From 1 to N. This number specifies the periodicity for the\n"
+"        automated generation of a planning. For a weekly planning, the\n"
+"        periodicity would be 7, because the planning has to be generated\n"
+"        every seven days."
+msgstr ""
+
+#. module: shift_light
+#: model:ir.ui.menu,name:shift_light.menu_template_top
+msgid "Generate planning"
+msgstr "Générer les créneaux"
+
+#. module: shift_light
+#: model_terms:ir.ui.view,arch_db:shift_light.planning_view_form
+#: model_terms:ir.ui.view,arch_db:shift_light.planning_view_tree
+msgid "Generate shifts"
+msgstr "Générer les créneaux"
+
+#. module: shift_light
+#. odoo-python
+#: code:addons/shift_light/wizard/generate_planning.py:0
+#, python-format
+msgid "Generated Shift"
+msgstr "Créneaux généré"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_daynumber__id
+#: model:ir.model.fields,field_description:shift_light.field_shift_generate_planning__id
+#: model:ir.model.fields,field_description:shift_light.field_shift_planning__id
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__id
+#: model:ir.model.fields,field_description:shift_light.field_shift_template__id
+#: model:ir.model.fields,field_description:shift_light.field_shift_type__id
+msgid "ID"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,help:shift_light.field_shift_shift__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,help:shift_light.field_shift_shift__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: shift_light
+#: model:ir.actions.act_window,name:shift_light.action_generate_shift_wizard
+msgid "Instanciate Planning Action"
+msgstr "Générer les créneaux"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_daynumber__write_uid
+#: model:ir.model.fields,field_description:shift_light.field_shift_generate_planning__write_uid
+#: model:ir.model.fields,field_description:shift_light.field_shift_planning__write_uid
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__write_uid
+#: model:ir.model.fields,field_description:shift_light.field_shift_template__write_uid
+#: model:ir.model.fields,field_description:shift_light.field_shift_type__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_daynumber__write_date
+#: model:ir.model.fields,field_description:shift_light.field_shift_generate_planning__write_date
+#: model:ir.model.fields,field_description:shift_light.field_shift_planning__write_date
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__write_date
+#: model:ir.model.fields,field_description:shift_light.field_shift_template__write_date
+#: model:ir.model.fields,field_description:shift_light.field_shift_type__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,help:shift_light.field_shift_template__worker_nb
+msgid "Max number of worker for this shift"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_daynumber__name
+#: model:ir.model.fields,field_description:shift_light.field_shift_planning__name
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__name
+#: model:ir.model.fields,field_description:shift_light.field_shift_template__name
+#: model:ir.model.fields,field_description:shift_light.field_shift_type__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: shift_light
+#: model_terms:ir.ui.view,arch_db:shift_light.shift_view_form
+#: model_terms:ir.ui.view,arch_db:shift_light.shift_view_form_calendar
+msgid "Need help"
+msgstr "SOS"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,help:shift_light.field_shift_shift__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,help:shift_light.field_shift_shift__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_template__worker_nb
+msgid "Number of worker"
+msgstr "Nombre de participant"
+
+#. module: shift_light
+#. odoo-python
+#: code:addons/shift_light/models/shift.py:0
+#, python-format
+msgid "Open"
+msgstr "Disponible"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__partner_id
+msgid "Partner"
+msgstr "Participant"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_planning__periodicity
+msgid "Periodicity"
+msgstr "Période"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__partner_phone
+msgid "Phone"
+msgstr "Téléphone"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_generate_planning__planning_id
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__planning_id
+#: model:ir.model.fields,field_description:shift_light.field_shift_template__planning_id
+#: model:ir.ui.menu,name:shift_light.menu_shift_top
+#: model_terms:ir.ui.view,arch_db:shift_light.shift_template_view_search
+msgid "Planning"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.actions.act_window,name:shift_light.action_planning
+#: model:ir.actions.act_window,name:shift_light.action_shift_template
+msgid "Planning Action"
+msgstr "Planning"
+
+#. module: shift_light
+#: model_terms:ir.ui.view,arch_db:shift_light.shift_view_form
+#: model_terms:ir.ui.view,arch_db:shift_light.shift_view_form_calendar
+msgid "Reserve"
+msgstr "Reserver"
+
+#. module: shift_light
+#. odoo-python
+#: code:addons/shift_light/models/shift.py:0
+#, python-format
+msgid "Reserved"
+msgstr "Reservé"
+
+#. module: shift_light
+#. odoo-python
+#: code:addons/shift_light/models/shift.py:0
+#, python-format
+msgid "SOS"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_planning__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.ui.menu,name:shift_light.menu_settings
+msgid "Settings"
+msgstr "Configuration"
+
+#. module: shift_light
+#: model:ir.ui.menu,name:shift_light.menu_root
+msgid "Shift Management"
+msgstr "Gestion des créneaux"
+
+#. module: shift_light
+#: model:res.groups,name:shift_light.group_shift_attendance
+msgid "Shift Read and write Access"
+msgstr "Accès au planning de créneau"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_planning__shift_template_ids
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__shift_template_id
+#: model_terms:ir.ui.view,arch_db:shift_light.planning_view_form
+#: model_terms:ir.ui.view,arch_db:shift_light.planning_view_tree
+msgid "Shift Template"
+msgstr "Modèle de créneau"
+
+#. module: shift_light
+#: model:ir.actions.act_window,name:shift_light.action_type
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__shift_type_id
+msgid "Shift Type"
+msgstr "Type de créneau"
+
+#. module: shift_light
+#: model:ir.ui.menu,name:shift_light.menu_shift_list
+msgid "Shift list"
+msgstr "Détails des créneaux"
+
+#. module: shift_light
+#: model:ir.ui.menu,name:shift_light.menu_shift_type
+msgid "Shift type"
+msgstr "Type de créneau"
+
+#. module: shift_light
+#: model:ir.actions.act_window,name:shift_light.action_shift_type
+msgid "Shift type Action"
+msgstr "Type de créneau"
+
+#. module: shift_light
+#: model:ir.actions.act_window,name:shift_light.action_shift
+#: model_terms:ir.ui.view,arch_db:shift_light.view_calendar_shift
+msgid "Shifts"
+msgstr "Créneaux"
+
+#. module: shift_light
+#: model:res.groups,name:shift_light.group_shift_management
+msgid "Shifts and Attendance Sheets Management"
+msgstr "Gestion des créneaux"
+
+#. module: shift_light
+#: model:ir.actions.act_window,name:shift_light.action_shift_list
+msgid "Shifts list"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_template__start_date
+msgid "Start Date"
+msgstr "Début"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__start_time
+#: model:ir.model.fields,field_description:shift_light.field_shift_template__start_time
+msgid "Start Time"
+msgstr "Début"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_shift__state
+msgid "State"
+msgstr "Statut"
+
+#. module: shift_light
+#: model:ir.model.fields,field_description:shift_light.field_shift_template__shift_type_id
+msgid "Type"
+msgstr ""
+
+#. module: shift_light
+#: model_terms:ir.ui.view,arch_db:shift_light.shift_view_form
+#: model_terms:ir.ui.view,arch_db:shift_light.shift_view_form_calendar
+msgid "Unsubcribe"
+msgstr "Se désinscrire"
+
+#. module: shift_light
+#: model_terms:ir.ui.view,arch_db:shift_light.shift_template_view_search
+msgid "Week Day"
+msgstr "Jour"
+
+#. module: shift_light
+#. odoo-python
+#: code:addons/shift_light/models/shift.py:0
+#, python-format
+msgid "You can't change shift informations."
+msgstr ""
+
+#. module: shift_light
+#: model_terms:ir.ui.view,arch_db:shift_light.planning_view_form
+#: model_terms:ir.ui.view,arch_db:shift_light.shift_template_view_form
+msgid "name"
+msgstr "Nom"
+
+#. module: shift_light
+#: model_terms:ir.ui.view,arch_db:shift_light.generate_planning_view_form
+msgid "or"
+msgstr "ou"
+
+#. module: shift_light
+#: model:ir.model,name:shift_light.model_shift_daynumber
+msgid "shift.daynumber"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model,name:shift_light.model_shift_generate_planning
+msgid "shift.generate_planning"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model,name:shift_light.model_shift_planning
+msgid "shift.planning"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model,name:shift_light.model_shift_shift
+msgid "shift.shift"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model,name:shift_light.model_shift_template
+msgid "shift.template"
+msgstr ""
+
+#. module: shift_light
+#: model:ir.model,name:shift_light.model_shift_type
+msgid "shift.type"
+msgstr ""
