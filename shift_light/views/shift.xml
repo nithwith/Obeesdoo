@@ -152,7 +152,7 @@
     <record model="ir.actions.act_window" id="action_shift_list">
         <field name="name">Shifts list</field>
         <field name="res_model">shift.shift</field>
-        <field name="view_mode">tree,calendar,form,pivot</field>
+        <field name="view_mode">tree,calendar,form,pivot,graph</field>
     </record>
 
 </odoo>
