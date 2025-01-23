@@ -11,7 +11,10 @@ class ShiftShift(models.Model):
 
     def _compute_display_name(self):
         for rec in self:
-            rec.display_name = rec.partner_id.name or ''
+            if rec.partner_id:
+                rec.display_name = ("%s %s")% (rec.partner_name, rec.partner_phone or ' ')
+            else:
+                rec.display_name = " "
 
     def _get_selection_status(self):
         return [

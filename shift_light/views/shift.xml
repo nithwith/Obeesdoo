@@ -23,11 +23,16 @@
                 </header>
                 <sheet>
                     <group>
-                        <field name="start_time" readonly="true"/>
-                        <field name="end_time" readonly="true"/>
-                        <field name="partner_id" 
-                        options="{'no_create': True, 'no_open': True}"
-                        domain="[('is_company', '=', False)]"/>
+                        <group>
+                            <field name="display_name"/>
+                        </group>
+                        <group>
+                            <field name="start_time" readonly="true"/>
+                            <field name="end_time" readonly="true"/>
+                            <field name="partner_id" 
+                            options="{'no_create': True, 'no_open': True}"
+                            domain="[('is_company', '=', False)]"/>
+                        </group>
                     </group>
                 </sheet>
                 <footer>
