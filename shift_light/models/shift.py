@@ -12,7 +12,7 @@ class ShiftShift(models.Model):
     def _compute_display_name(self):
         for rec in self:
             if rec.partner_id:
-                rec.display_name = ("%s %s")% (rec.partner_name, rec.partner_phone or ' ')
+                rec.display_name = ("%s %s")% (rec.partner_name, rec.partner_mobile or ' ')
             else:
                 rec.display_name = " "
 
@@ -36,7 +36,7 @@ class ShiftShift(models.Model):
     shift_type_id = fields.Many2one("shift.type", string="Shift Type")
     partner_id = fields.Many2one("res.partner", tracking=True)
     partner_name = fields.Char(related='partner_id.name', related_sudo=True)
-    partner_phone = fields.Char(related='partner_id.phone', related_sudo=True)
+    partner_mobile = fields.Char(related='partner_id.mobile', related_sudo=True)
     start_time = fields.Datetime(tracking=True, index=True, required=True)
     end_time = fields.Datetime(tracking=True, required=True)
     state = fields.Selection(

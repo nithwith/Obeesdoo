@@ -24,9 +24,6 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="display_name"/>
-                        </group>
-                        <group>
                             <field name="start_time" readonly="true"/>
                             <field name="end_time" readonly="true"/>
                             <field name="partner_id" 
@@ -134,11 +131,13 @@
                 form_view_id="%(shift_light.shift_view_form_calendar)d">
                 <field name="state" filters="1"/>
                 <field  name="partner_id" invisible="1"/>
+                <field name="start_time" />
+                <field name="end_time" />
                 <field  name="partner_name" 
                 options="{'icon': 'fa fa-user-o'}"
                 invisible="not partner_id"
                 />
-                <field name="partner_phone" 
+                <field name="partner_mobile" 
                 options="{'icon': 'fa fa-phone'}" 
                 invisible="not partner_id"/>
             </calendar>
